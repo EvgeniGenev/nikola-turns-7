@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Printable Birthday Invite — Nikola Genev is Turning 7!!!</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --in-oklab: ;
+      --in-oklch: ;
+      --kirby-pink: #ff5da2;
+      --kirby-deep: #d81b60;
+      --warp-gold: #ffd524;
+      --warp-amber: #ff9100;
+      --dream-navy: #2a114b;
+      --dream-purple: #5b2c98;
+      --sky-blue: #38b6ff;
+      --mint-star: #00e676;
+      --cream-bg: #fffdf9;
+      line-height: 1.4;
+    }
+
+    @supports (background: linear-gradient(in oklab, white, black)) {
+      :root {
+        --in-oklab: in oklab;
+        --in-oklch: in oklch;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+
+    body {
+      font-family: 'Nunito', system-ui, -apple-system, sans-serif;
+      background: linear-gradient(135deg var(--in-oklab), #2a114b, #4a1976, #ff5da2);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 1.5rem 1rem 3rem;
+      color: var(--dream-navy);
+      line-height: 1.45;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Fredoka', cursive, sans-serif;
+      text-wrap: balance;
+    }
+
+    /* Screen-only control bar */
+    .print-toolbar {
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(12px);
+      border: 3px solid var(--warp-gold);
+      border-radius: 999px;
+      padding: 0.65rem 1.25rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 12px 32px rgba(20, 5, 45, 0.45);
+      max-width: 960px;
+      width: 100%;
+    }
+
+    .toolbar-title {
+      font-family: 'Fredoka', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--dream-navy);
+      margin-right: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .btn {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      padding: 0.55rem 1.15rem;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: linear-gradient(to bottom var(--in-oklab), #ff6eb0, #d81b60);
+      color: #fff;
+      box-shadow: 0 4px 12px rgba(216, 27, 96, 0.4);
+    }
+
+    .btn-gold {
+      background: linear-gradient(to bottom var(--in-oklab), #ffe047, #ff9900);
+      color: var(--dream-navy);
+      box-shadow: 0 4px 12px rgba(255, 153, 0, 0.35);
+    }
+
+    .btn-outline {
+      background: #f3ecff;
+      color: var(--dream-purple);
+      border: 2px solid #d1b3ff;
+    }
+
+    /* Sheet wrapper */
+    .print-sheet {
+      display: flex;
+      gap: 0.5in;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    /* 5x7 inch standard invitation card */
+    .invite-card {
+      width: 5in;
+      height: 7in;
+      position: relative;
+      border-radius: 18px;
+      overflow: hidden;
+      background-color: #fff6fb;
+      background-image: url('assets/invite-bg.jpg');
+      background-size: cover;
+      background-position: center;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55), 0 0 0 6px rgba(255, 213, 36, 0.85);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 0.28in 0.3in 0.24in;
+      isolation: isolate;
+    }
+
+    /* Soft translucent readability backdrop inside frame */
+    .invite-inner {
+      background: linear-gradient(
+        180deg var(--in-oklab),
+        rgba(255, 255, 255, 0.86) 0%,
+        rgba(255, 250, 253, 0.94) 45%,
+        rgba(255, 252, 245, 0.95) 100%
+      );
+      border: 3px solid rgba(255, 105, 180, 0.45);
+      border-radius: 22px;
+      padding: 0.16in 0.18in 0.15in;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      text-align: center;
+      box-shadow: inset 0 0 24px rgba(255, 213, 36, 0.25), 0 8px 24px rgba(42, 17, 75, 0.12);
+      position: relative;
+    }
+
+    /* Top Header & Hero Photo */
+    .top-badge-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+
+    .level-pill {
+      background: linear-gradient(90deg var(--in-oklab), #ff5da2, #ff9100, #ffd524, #38b6ff);
+      padding: 2px;
+      border-radius: 999px;
+      margin-bottom: 0.06in;
+      box-shadow: 0 3px 10px rgba(216, 27, 96, 0.25);
+    }
+
+    .level-pill span {
+      display: block;
+      background: var(--dream-navy);
+      color: var(--warp-gold);
+      font-family: 'Fredoka', sans-serif;
+      font-weight: 700;
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      padding: 0.15rem 0.75rem;
+      border-radius: 999px;
+      text-transform: uppercase;
+    }
+
+    .hero-banner-frame {
+      width: 100%;
+      height: 1.38in;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 3px solid var(--warp-gold);
+      box-shadow: 0 5px 14px rgba(42, 17, 75, 0.22);
+      position: relative;
+      margin-bottom: 0.07in;
+    }
+
+    .hero-banner-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 32%;
+      display: block;
+    }
+
+    .headline-name {
+      font-family: 'Fredoka', sans-serif;
+      font-weight: 700;
+      font-size: 1.68rem;
+      line-height: 1.02;
+      color: var(--dream-navy);
+      text-shadow: 0 2px 0 #fff, 0 4px 10px rgba(255, 93, 162, 0.35);
+      letter-spacing: 0.01em;
+    }
+
+    .headline-turning {
+      font-family: 'Fredoka', sans-serif;
+      font-weight: 700;
+      font-size: 1.38rem;
+      line-height: 1.08;
+      background: linear-gradient(180deg var(--in-oklab), #ff1e7a 0%, #b0004c 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      filter: drop-shadow(0 2px 0 #ffe6f2);
+      margin-top: 0.02in;
+    }
+
+    .headline-sub {
+      font-size: 0.74rem;
+      font-weight: 800;
+      color: var(--dream-purple);
+      margin-top: 0.03in;
+    }
+
+    /* 3 Party Rules Section */
+    .rules-box {
+      width: 100%;
+      background: linear-gradient(135deg var(--in-oklab), #fff0f7 0%, #f2f8ff 100%);
+      border: 2px dashed var(--kirby-pink);
+      border-radius: 14px;
+      padding: 0.08in 0.1in;
+      margin: 0.04in 0;
+    }
+
+    .rules-title {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: var(--kirby-deep);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.05in;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.3rem;
+    }
+
+    .rules-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.07in;
+    }
+
+    .rule-item {
+      background: #ffffff;
+      border-radius: 10px;
+      padding: 0.05in 0.04in;
+      border: 1.5px solid #ffd1e6;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 0 2px 6px rgba(42, 17, 75, 0.06);
+    }
+
+    .rule-item img {
+      width: 0.62in;
+      height: 0.62in;
+      border-radius: 8px;
+      object-fit: cover;
+      border: 1.5px solid var(--warp-gold);
+      margin-bottom: 0.03in;
+    }
+
+    .rule-num {
+      font-size: 0.56rem;
+      font-weight: 900;
+      color: #fff;
+      background: var(--kirby-deep);
+      padding: 0.05rem 0.35rem;
+      border-radius: 999px;
+      margin-bottom: 0.02in;
+      text-transform: uppercase;
+    }
+
+    .rule-text {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--dream-navy);
+      line-height: 1.1;
+    }
+
+    /* Event Date, Time & Venue Box */
+    .details-box {
+      width: 100%;
+      background: var(--dream-navy);
+      color: #ffffff;
+      border-radius: 14px;
+      padding: 0.09in 0.12in;
+      border: 2.5px solid var(--warp-gold);
+      box-shadow: 0 5px 14px rgba(42, 17, 75, 0.2);
+      display: flex;
+      flex-direction: column;
+      gap: 0.03in;
+    }
+
+    .date-time-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.45rem;
+      flex-wrap: wrap;
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--warp-gold);
+    }
+
+    .date-divider {
+      color: var(--kirby-pink);
+    }
+
+    .venue-name {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-top: 0.01in;
+    }
+
+    .venue-addr {
+      font-size: 0.69rem;
+      font-weight: 700;
+      color: #d7c6ff;
+    }
+
+    /* Bottom Footer: RSVP + QR Code */
+    .footer-row {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 0.1in;
+      align-items: center;
+      background: linear-gradient(90deg var(--in-oklab), #fff4d6 0%, #ffe6f2 100%);
+      border: 2px solid var(--warp-amber);
+      border-radius: 14px;
+      padding: 0.07in 0.1in;
+    }
+
+    .rsvp-col {
+      text-align: start;
+      display: flex;
+      flex-direction: column;
+      gap: 0.02in;
+    }
+
+    .rsvp-label {
+      font-size: 0.62rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--kirby-deep);
+    }
+
+    .rsvp-phone {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 1.06rem;
+      font-weight: 700;
+      color: var(--dream-navy);
+      line-height: 1.05;
+    }
+
+    .rsvp-cta {
+      font-size: 0.63rem;
+      font-weight: 800;
+      color: var(--dream-purple);
+      line-height: 1.2;
+    }
+
+    .rsvp-url {
+      font-size: 0.55rem;
+      font-weight: 800;
+      color: #6c3fb5;
+      overflow-wrap: anywhere;
+      margin-top: 1px;
+    }
+
+    .qr-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: #ffffff;
+      padding: 0.05in;
+      border-radius: 10px;
+      border: 2px solid var(--dream-navy);
+      box-shadow: 0 3px 8px rgba(42, 17, 75, 0.12);
+    }
+
+    .qr-col img {
+      width: 0.84in;
+      height: 0.84in;
+      display: block;
+    }
+
+    .qr-caption {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 0.48rem;
+      font-weight: 700;
+      color: var(--dream-navy);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-top: 2px;
+    }
+
+    /* Duplicate card for 2-up printing (hidden by default) */
+    .card-duplicate {
+      display: none;
+    }
+
+    body.two-up .card-duplicate {
+      display: flex;
+    }
+
+    body.render-card {
+      padding: 0 !important;
+      margin: 0 !important;
+      min-height: 7in !important;
+      width: 5in !important;
+      background: #fff6fb !important;
+      display: block !important;
+    }
+
+    body.render-card .print-toolbar {
+      display: none !important;
+    }
+
+    body.render-card .invite-card {
+      box-shadow: none !important;
+      border-radius: 0 !important;
+      width: 5in !important;
+      height: 7in !important;
+    }
+
+    @page {
+      size: 5in 7in;
+      margin: 0;
+    }
+
+    @media print {
+      body {
+        background: #ffffff !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        min-height: auto;
+        justify-content: center;
+      }
+
+      .print-toolbar {
+        display: none !important;
+      }
+
+      .invite-card {
+        box-shadow: none !important;
+        border: none !important;
+        border-radius: 0 !important;
+        page-break-inside: avoid;
+      }
+
+      body.two-up .print-sheet {
+        flex-direction: row;
+        gap: 0.25in;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="print-toolbar" role="region" aria-label="Invitation Print Controls">
+    <div class="toolbar-title">⭐ Nikola's 7th Birthday Printable Invite (5×7" Full Color)</div>
+    <button class="btn btn-primary" onclick="window.print()">🖨️ Print / Save as PDF</button>
+    <button class="btn btn-gold" id="toggleTwoUpBtn" onclick="toggleTwoUp()">📄 Switch to 2-Per-Page (8.5×11" Sheet)</button>
+    <a class="btn btn-outline" href="index.html">🎮 Back to Interactive Party Website</a>
+  </div>
+
+  <div class="print-sheet" id="printSheet">
+    <!-- Primary 5x7 Invitation Card -->
+    <article class="invite-card" id="primaryCard" aria-label="Nikola Genev 7th Birthday Invitation">
+      <div class="invite-inner">
+
+        <div class="top-badge-wrap">
+          <div class="level-pill"><span>⭐ Kirby Dream Land Adventure • Level 7 ⭐</span></div>
+          <div class="hero-banner-frame">
+            <img src="assets/hero.jpg" alt="Kirby wearing a golden 7 crown riding a Warp Star with birthday cake" />
+          </div>
+          <h1 class="headline-name">NIKOLA GENEV</h1>
+          <div class="headline-turning">IS TURNING 7 !!!</div>
+          <p class="headline-sub">Warp on over for an epic Kirby-themed birthday party!</p>
+        </div>
+
+        <section class="rules-box" aria-label="Official Party Rules">
+          <h2 class="rules-title">✨ Official Party Rules ✨</h2>
+          <div class="rules-grid">
+            <div class="rule-item">
+              <span class="rule-num">Rule #1</span>
+              <img src="assets/rule-no-brainrot.jpg" alt="Kirby blocking a dizzy TV with a Star Rod" />
+              <div class="rule-text">No Brainrot!</div>
+            </div>
+            <div class="rule-item">
+              <span class="rule-num">Rule #2</span>
+              <img src="assets/rule-have-fun.jpg" alt="Kirby and Waddle Dee playing arcade games" />
+              <div class="rule-text">Have Fun!</div>
+            </div>
+            <div class="rule-item">
+              <span class="rule-num">Rule #3</span>
+              <img src="assets/rule-listen-nikola.jpg" alt="King Kirby wearing a number 7 crown" />
+              <div class="rule-text">Listen to Nikola :)</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="details-box" aria-label="Date, Time, and Location">
+          <div class="date-time-row">
+            <span>📅 SUN, NOV 8, 2026</span>
+            <span class="date-divider">•</span>
+            <span>🕝 2:30 – 5:30 PM</span>
+          </div>
+          <div class="venue-name">📍 Chuck E. Cheese Adventure World</div>
+          <div class="venue-addr">2770 East Germann Road, Chandler, AZ 85286</div>
+        </section>
+
+        <footer class="footer-row">
+          <div class="rsvp-col">
+            <span class="rsvp-label">📱 Call or Text to RSVP</span>
+            <div class="rsvp-phone">602-476-9561</div>
+            <div class="rsvp-cta">Scan the QR code for the interactive party site, Kirby mini-game, directions &amp; 1-tap RSVP!</div>
+            <div class="rsvp-url">evgenigenev.github.io/nikola-turns-7</div>
+          </div>
+          <div class="qr-col">
+            <img src="assets/qrcode.svg" alt="QR Code to Nikola's 7th Birthday Interactive Website" />
+            <span class="qr-caption">Scan Me! ⭐</span>
+          </div>
+        </footer>
+
+      </div>
+    </article>
+
+    <!-- Second Card for 2-Up Printing on Landscape 8.5x11 -->
+    <article class="invite-card card-duplicate" id="duplicateCard" aria-hidden="true"></article>
+  </div>
+
+  <script>
+    if (window.location.search.includes('render=card')) {
+      document.body.classList.add('render-card');
+    }
+    const primary = document.getElementById('primaryCard');
+    const duplicate = document.getElementById('duplicateCard');
+    duplicate.innerHTML = primary.innerHTML;
+
+    function toggleTwoUp() {
+      const isTwoUp = document.body.classList.toggle('two-up');
+      const btn = document.getElementById('toggleTwoUpBtn');
+      btn.textContent = isTwoUp
+        ? '🃏 Switch to Single 5×7" Card'
+        : '📄 Switch to 2-Per-Page (8.5×11" Sheet)';
+    }
+  </script>
+</body>
+</html>

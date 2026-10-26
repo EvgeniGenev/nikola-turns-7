@@ -1,0 +1,21 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Nikola Turns 7//Kirby Birthday Party//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:nikola-genev-7th-birthday-20261108@dreamland
+DTSTAMP:20261026T000000Z
+DTSTART:20261108T213000Z
+DTEND:20261109T003000Z
+SUMMARY:⭐ Nikola Genev's 7th Birthday Party! (Kirby Theme)
+DESCRIPTION:Nikola Genev is turning 7!!! Join us for a Kirby-themed birthday adventure at Chuck E. Cheese Adventure World!\n\nTHE 3 PARTY RULES:\n1. No brainrot\n2. Have fun\n3. Listen to Nikola :)\n\nRSVP: 602-476-9561\nParty Website: https://evgenigenev.github.io/nikola-turns-7/
+LOCATION:Chuck E. Cheese Adventure World\, 2770 East Germann Road\, Chandler\, AZ 85286
+STATUS:CONFIRMED
+BEGIN:VALARM
+TRIGGER:-PT2H
+ACTION:DISPLAY
+DESCRIPTION:Reminder: Nikola Genev's 7th Birthday Party starts in 2 hours!
+END:VALARM
+END:VEVENT
+END:VCALENDAR
