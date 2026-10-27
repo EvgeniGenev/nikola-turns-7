@@ -1776,15 +1776,44 @@
         spawnItem();
       }
 
-      // Update & draw falling items
+      // Update & draw falling items (100% opaque with vibrant glowing badges)
       gCtx.textAlign = 'center';
       gCtx.textBaseline = 'middle';
       for (let i = fallingItems.length - 1; i >= 0; i--) {
         const it = fallingItems[i];
         it.y += it.vy;
 
-        gCtx.font = '32px sans-serif';
-        gCtx.fillText(it.emoji, it.x, it.y);
+        gCtx.save();
+        gCtx.globalAlpha = 1.0;
+
+        // Draw high-contrast circular token behind each collectible/hazard
+        gCtx.beginPath();
+        gCtx.arc(it.x, it.y, it.r + 3, 0, Math.PI * 2);
+        if (it.type === 'cake') {
+          gCtx.fillStyle = '#fff5cc';
+          gCtx.strokeStyle = '#ffd524';
+          gCtx.lineWidth = 3.5;
+        } else if (it.type === 'tomato') {
+          gCtx.fillStyle = '#e8fff3';
+          gCtx.strokeStyle = '#00e676';
+          gCtx.lineWidth = 3;
+        } else if (it.type === 'brainrot') {
+          gCtx.fillStyle = '#3b0926';
+          gCtx.strokeStyle = '#ff4057';
+          gCtx.lineWidth = 3;
+        } else {
+          gCtx.fillStyle = '#eef8ff';
+          gCtx.strokeStyle = '#ffd524';
+          gCtx.lineWidth = 2.5;
+        }
+        gCtx.fill();
+        gCtx.stroke();
+
+        // Draw 100% opaque emoji icon
+        gCtx.fillStyle = '#ffffff';
+        gCtx.font = '30px "Segoe UI Emoji", "Apple Color Emoji", "Noto Color Emoji", sans-serif';
+        gCtx.fillText(it.emoji, it.x, it.y + 1);
+        gCtx.restore();
 
         // Collision check with Kirby
         const dx = it.x - player.x;
